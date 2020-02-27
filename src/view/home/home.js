@@ -1,6 +1,7 @@
 import React from 'react';
 import Appbar from '../../components/appbar/appbar'
 import Appavatar from '../../components/avatar/appAvatar'
+import Gradient from '../../components/gradient/Gradient'
 import './home.scss'
 
 class Home extends React.Component {
@@ -16,7 +17,8 @@ class Home extends React.Component {
           left="bars"
           right="search"
         />
-        <Appavatar></Appavatar>
+        <Appavatar />
+        <Gradient />
         home
       </div>
      );

@@ -29,7 +29,7 @@ class Appavatar extends React.Component {
         <h2 className="avatar-name">Hello, Tom</h2>
         <p className="avatar-tips">
           Looks like feed good.<br />
-          You have {this.props.todayTasks.length}tasks to do today.
+          You have {this.props.todayTasks.length} tasks to do today.
         </p>
         <p className="avatar-date">{this.getToday()}</p>
       </div>
