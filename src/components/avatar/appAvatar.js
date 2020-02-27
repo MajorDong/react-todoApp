@@ -20,21 +20,24 @@ class Appavatar extends React.Component {
   }
   render() {
     return (
-      <div className="appAvatar" className={!!this.props.selected ? 'avatar__selected': ''} >
+      <div className={!!this.props.selected ? 'appAvatar avatar-selected': 'appAvatar'} >
         <Avatar
+          className="avatar-face"
           src={imgURL}
           size={80}
         ></Avatar>
-        <h2>Hello, Tom</h2>
-        <p className="avatar_tips">
+        <h2 className="avatar-name">Hello, Tom</h2>
+        <p className="avatar-tips">
           Looks like feed good.<br />
           You have {this.props.todayTasks.length}tasks to do today.
         </p>
-        <p>{this.getToday()}</p>
+        <p className="avatar-date">{this.getToday()}</p>
       </div>
     );
   }
 }
+
+
 
 const mapStateToProps = (state) => {
   const tasks = []

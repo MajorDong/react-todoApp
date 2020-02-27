@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './appbar.scss'
+
+
 
 class AppBar extends React.Component {
   constructor(props) {
@@ -19,6 +22,16 @@ class AppBar extends React.Component {
       </div>
      );
   }
+}
+AppBar.propTypes = {
+  title: PropTypes.string,
+  left: PropTypes.string,
+  right: PropTypes.string
+}
+AppBar.defaultProps = {
+  title: '',
+  left: 'chevron-left',
+  right: 'ellipsis-v'
 }
  
 export default AppBar;

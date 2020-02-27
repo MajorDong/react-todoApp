@@ -1,4 +1,36 @@
-.avatar__selected {
-  transform: translate3d(0, 20px, 0);
-  opacity: 0;
+.appAvatar{
+  &.avatar-selected {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 40px;
+  padding-top: 37px;
+  .avatar-face{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  .avatar-name{
+    margin-top: 32px;
+    padding: 0 6px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+  .avatar-tips{
+    margin-top: 16px;
+    padding: 0 6px;
+    font-size: 13px;
+    font-weight: 100;
+    opacity: 0.8;
+    line-height: 1.6em;
+  }
+  .avatar-date {
+    margin-top: 37px;
+    margin-bottom: 16px;
+    padding: 0 6px;
+    font-size: 14px;
+  }
 }
