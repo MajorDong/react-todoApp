@@ -58,13 +58,14 @@ const defaultState = {
           deleted: false
         },
         {
+          id: 8,
           title: 'Quick Prototyping',
           date: new Date('2019-09-16'),
           done: false,
           deleted: false
         },
         {
-          id: 8,
+          id: 9,
           title: 'UX Conference',
           date: new Date('2019-09-16'),
           done: false,
