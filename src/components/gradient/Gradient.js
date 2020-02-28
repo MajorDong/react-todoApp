@@ -15,7 +15,7 @@ class Gradient extends React.Component {
           <GradientColor 
             key={todo.name}
             colors={todo.colors}
-            active={index <= this.props.currentIndex}
+            active={index <= this.props.currentIndex} // 0,1,2
           />
         ))}
       </div>

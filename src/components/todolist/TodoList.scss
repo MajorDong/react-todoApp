@@ -1,0 +1,21 @@
+.todoList{
+  border: 1px solid black;
+  height: 400px;
+  transition: all 0.5s ease;
+  > ul,
+  > ul > li {
+    display: flex;
+    height: 100%;
+  }
+  > ul > li{
+    flex: 1;
+    transition: transform 0.5s ease;
+  }
+  .todo {
+    border-radius: 8px;
+    background-color: white;
+  }
+  .todoList-selected {
+  transform: scaleX(1.25);
+  }
+}
