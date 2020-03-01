@@ -1,5 +1,9 @@
 .todo-detail {
   position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 0;
@@ -12,81 +16,5 @@
     margin-top: -44px;
     padding: 0 20px;
     box-shadow: none;
-  }
-  .todo-head,
-  .todo-body {
-    transform: translate3d(0, 88px, 0);
-  }
-  .todo-menu {
-    opacity: 0;
-  }
-  .todo-tasks {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  .appBar {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.show-exit {
-  border-radius: 0;
-
-  .todo {
-    padding: 0 20px;
-  }
-  .todo-head,
-  .todo-body {
-    transform: translate3d(0, 88px, 0);
-  }
-  .todo-menu {
-    opacity: 0;
-  }
-  .todo-tasks {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-  }
-  .appBar {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.show-enter {
-  border-radius: 8px;
-
-  .todo {
-    padding: 0;
-  }
-  .todo-head {
-    transform: translate3d(0, 0, 0);
-  }
-  .todo-body {
-    transform: translate3d(0, 189px, 0);
-  }
-  .todo-menu {
-    opacity: 1;
-  }
-  .todo-tasks {
-    opacity: 0;
-    transform: scale3d(1, 0, 1);
-  }
-  .appBar {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-  }
-}
-.show-enter-active,
-.show-leave-active {
-  transition: all 0.5s ease;
-
-  .todo,
-  .todo-head,
-  .todo-body,
-  .todo-menu,
-  .todo-tasks,
-  .appBar {
-    transition: all 0.5s ease;
   }
 }

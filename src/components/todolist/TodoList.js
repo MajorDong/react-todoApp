@@ -12,7 +12,6 @@ class TodoList extends React.Component {
     this.TodoListRef = React.createRef(null)
   }
   render() {
-    console.log(this.props.todos)
     return (
       <div
         className={this.props.selected ? 'todoList todoList-selected' : 'todoList'}
@@ -30,7 +29,7 @@ class TodoList extends React.Component {
               <Todo
                   todo={todo}
                   selectfuc={this.props.selectTodo}
-                  selected={this.props.selected && todo === this.props.selected.todo}
+                  theSelected={!!this.props.selected && todo === this.props.selected.todo}
                 />
               </li>
             ))

@@ -96,7 +96,7 @@ const reducer = (state = defaultState, action) => {
       {
         let newState = JSON.parse(JSON.stringify(state))
         newState.unselect = newState.selected
-        state.selected = null
+        newState.selected = null
         return newState
       }
     case 'NEXT_TODO':

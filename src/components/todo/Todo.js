@@ -6,7 +6,8 @@ import './Todo.scss'
 
 
 const Todo = (props) => {
-  let { todo, selected } = props
+  console.log(props)
+  let { todo, theSelected } = props
   const progressColor = useMemo(() => {
     const colorLeft = `color-stop(30%, ${todo.colors[0]})`
     const colorRight = `to(${todo.colors[1]})`
@@ -17,8 +18,16 @@ const Todo = (props) => {
 
   const todayTasks = useMemo(() => {
     const todoCount = todo.tasks.filter(task =>
-      !task.done&&!task.deleted)
+      !task.done && !task.deleted)
     return todoCount
+  },
+    [todo]
+  )
+
+  const doneTasks = useMemo(() => {
+    const doneCount = todo.tasks.filter(task =>
+      task.done && !task.deleted)
+    return doneCount
   },
     [todo]
   )
@@ -31,24 +40,26 @@ const Todo = (props) => {
   },
     [todo]
   )
-  
-  const handleOnClick = () => {
-    props.selectfuc( { todo } )
+
+  const handleOnClick = (e) => {
+    e.stopPropagation()
+    props.selectfuc({ todo })
   }
 
   return (
-    <div 
-      className={selected ? 'todo todo-selected' : 'todo'}
-      onClick={handleOnClick}
-    >
-      <div className="todo-head">
-        <div className="todo-icon" style={{ color: todo.colors[0] }}>
-          <i className={`fa fa-${todo.icon}`}></i>
+    <div className="todo">
+      {!theSelected && (
+        <div
+          className='todo-head'
+          onClick={handleOnClick}>
+          <div className="todo-icon" style={{ color: todo.colors[0] }}>
+            <i className={`fa fa-${todo.icon}`}></i>
+          </div>
+          <div className="todo-menu">
+            <i className="fa fa-ellipsis-v"></i>
+          </div>
         </div>
-        <div className="todo-menu">
-          <i className="fa fa-ellipsis-v"></i>
-        </div>
-      </div>
+      )}
       <div className="todo-body">
         <p className="todo-tips">{todo.tasks.length} Tasks</p>
         <h3 className="todo-title">{todo.name}</h3>
@@ -74,6 +85,18 @@ const Todo = (props) => {
               </ul>
             </div>
           )}
+          {doneTasks.length > 0 && (
+            <div className="todo-tasks-done">
+              <h4>Done</h4>
+              <ul>
+                {doneTasks.map(item => (
+                  <li key={item.id}>
+                    <Task task={item}></Task>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -82,7 +105,7 @@ const Todo = (props) => {
 
 Todo.propTypes = {
   todo: PropTypes.object.isRequired,
-  selected: PropTypes.bool,
+  theSelected: PropTypes.bool.isRequired,
   selectfun: PropTypes.func
 }
 

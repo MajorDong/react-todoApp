@@ -8,11 +8,17 @@ class AppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick(e){
+    console.log(1)
+    e.stopPropagation()
+    this.props.lFuc()
   }
   render() { 
     return ( 
-      <div className="appBar">
-        <span onClick={this.props.leftfuc}>
+      <div className="appBar" >
+        <span onClick={this.handleClick}>
           <i className={`fa fa-${this.props.left}`}></i>
         </span>
         <h1>{this.props.title}</h1>
