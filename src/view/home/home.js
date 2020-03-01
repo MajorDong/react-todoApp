@@ -3,6 +3,7 @@ import Appbar from '../../components/appbar/appbar'
 import Appavatar from '../../components/avatar/appAvatar'
 import Gradient from '../../components/gradient/Gradient'
 import TodoList from '../../components/todolist/TodoList'
+import TodoDetail from '../../components/tododetail/TodoDetail'
 import './home.scss'
 
 class Home extends React.Component {
@@ -21,6 +22,7 @@ class Home extends React.Component {
         <Appavatar />
         <Gradient />
         <TodoList />
+        <TodoDetail />
         home
       </div>
      );

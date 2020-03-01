@@ -1,6 +1,6 @@
-const selectTodo = (selected)=>({
+const selectTodo = (selectedTodo)=>({
   type: 'SELECT_TODO',
-  selected
+  selectedTodo
 })
 
 const unselectTodo = () =>({
@@ -15,8 +15,12 @@ const prevTodo = () =>({
   type: 'PREV_TODO'
 })
 
+const deleteTask = (taskID) =>({
+  type: 'DELETE_TASK',
+  taskID
+})
 const toggleEditing =() =>({
   type: 'TOGGLE_EDITING'
 })
 
-export {selectTodo,unselectTodo,nextTodo,prevTodo,toggleEditing}
+export {selectTodo,unselectTodo,nextTodo,prevTodo,deleteTask,toggleEditing}

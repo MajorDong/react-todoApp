@@ -11,8 +11,7 @@ const defaultState = {
         {
           id: 1,
           title: 'Dating',
-          date: new Date(),
-          done: false,
+          done: true,
           deleted: false
         }
       ],
@@ -25,49 +24,42 @@ const defaultState = {
         {
           id: 3,
           title: 'Design Sprint',
-          date: new Date(),
           done: true,
           deleted: false
         },
         {
           id: 4,
           title: 'Icon Set Design for Mobile App',
-          date: new Date(),
-          done: false,
+          done: true,
           deleted: false
         },
         {
           id: 5,
           title: 'HTML/CSS Study',
-          date: new Date(),
-          done: false,
+          done: true,
           deleted: false
         },
         {
           id: 6,
           title: 'Weekly Report',
-          date: new Date(),
           done: false,
           deleted: false
         },
         {
           id: 7,
           title: 'Design Meeting',
-          date: new Date(),
           done: false,
           deleted: false
         },
         {
           id: 8,
           title: 'Quick Prototyping',
-          date: new Date('2019-09-16'),
           done: false,
           deleted: false
         },
         {
           id: 9,
           title: 'UX Conference',
-          date: new Date('2019-09-16'),
           done: false,
           deleted: false
         }
@@ -81,7 +73,6 @@ const defaultState = {
         {
           id: 2,
           title: 'House Keeping',
-          date: new Date(),
           done: true,
           deleted: false
         }
@@ -97,7 +88,8 @@ const reducer = (state = defaultState, action) => {
       {
         let newState = JSON.parse(JSON.stringify(state))
         newState.unselect = null
-        newState.selected = action.selected
+        newState.selected = action.selectedTodo
+        console.log(newState.selected)
         return newState
       }
     case 'UNSELECT_TODO':
@@ -123,13 +115,24 @@ const reducer = (state = defaultState, action) => {
           return newState
         }
       }
+    case 'DELETE_TASK':
+      {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.todos.forEach( todo => {
+          todo.tasks.forEach( task =>{
+            if(task.id === action.taskID){
+              task.deleted = true
+            }
+          })
+        });
+        return newState
+      }
     case 'TOGGLE_EDITING':
       {
         let newState = JSON.parse(JSON.stringify(state))
         if (newState.editing && newState.editing.text) {
           newState.selected.todo.tasks.unshift({
             title: newState.editing.text,
-            date: new Date(),
             done: false,
             deleted: false
           })

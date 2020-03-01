@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Avatar } from 'antd'
 import imgURL from '../../assets/face.jpeg'
-import { tomorrow } from '../../shared'
 import './appAvatar.scss'
 
 
@@ -15,7 +14,6 @@ class Appavatar extends React.Component {
   }
   getToday() {
     let todayStr = this.state.today.toDateString().toUpperCase()
-    console.log(todayStr)
     return todayStr
   }
   render() {
@@ -43,7 +41,7 @@ const mapStateToProps = (state) => {
   const tasks = []
   state.todos.forEach(todo => {
     todo.tasks.forEach(task => {
-      if (task.date <= tomorrow && !task.done && !task.deleted) {
+      if (!task.done && !task.deleted) {
         tasks.push(task)
       }
     })

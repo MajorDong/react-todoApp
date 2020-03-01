@@ -12,6 +12,7 @@ class TodoList extends React.Component {
     this.TodoListRef = React.createRef(null)
   }
   render() {
+    console.log(this.props.todos)
     return (
       <div
         className={this.props.selected ? 'todoList todoList-selected' : 'todoList'}
@@ -20,7 +21,7 @@ class TodoList extends React.Component {
         <ul
           style={{ width: `${this.props.todos.length * 100}%` }}
         >{
-            this.props.todos.map((todo,index) => (
+            this.props.todos.map((todo) => (
               <li
                 key={todo.name}
                 style={{ transform: `translateX(-${this.props.currentIndex * 100}%)` }}
@@ -28,7 +29,7 @@ class TodoList extends React.Component {
               
               <Todo
                   todo={todo}
-                  onClick={this.props.selectTodo}
+                  selectfuc={this.props.selectTodo}
                   selected={this.props.selected && todo === this.props.selected.todo}
                 />
               </li>

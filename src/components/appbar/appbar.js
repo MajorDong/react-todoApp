@@ -12,7 +12,7 @@ class AppBar extends React.Component {
   render() { 
     return ( 
       <div className="appBar">
-        <span>
+        <span onClick={this.props.leftfuc}>
           <i className={`fa fa-${this.props.left}`}></i>
         </span>
         <h1>{this.props.title}</h1>
@@ -26,7 +26,8 @@ class AppBar extends React.Component {
 AppBar.propTypes = {
   title: PropTypes.string,
   left: PropTypes.string,
-  right: PropTypes.string
+  right: PropTypes.string,
+  leftfuc: PropTypes.func
 }
 AppBar.defaultProps = {
   title: '',
