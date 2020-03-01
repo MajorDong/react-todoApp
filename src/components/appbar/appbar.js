@@ -10,15 +10,19 @@ class AppBar extends React.Component {
     super(props);
     this.state = {  }
     this.handleClick = this.handleClick.bind(this)
+    this.handleClick1 = this.handleClick1.bind(this)
   }
   handleClick(e){
     e.stopPropagation()
     this.props.leftfuc()
   }
+  handleClick1(){
+
+  }
   render() { 
     return ( 
       <div className="appBar" >
-        <span onClick={this.handleClick}>
+        <span onClick={!!this.props.selected ? this.handleClick : this.handleClick1}>
           <i className={`fa fa-${this.props.left}`}></i>
         </span>
         <h1>{this.props.title}</h1>
@@ -40,5 +44,11 @@ AppBar.defaultProps = {
   left: 'chevron-left',
   right: 'ellipsis-v'
 }
+
+const mapStateToProps = (state)=>{
+  return{
+    selected: state.selected
+  }
+}
  
-export default connect()(AppBar);
+export default connect(mapStateToProps)(AppBar);

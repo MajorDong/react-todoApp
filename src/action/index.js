@@ -23,4 +23,9 @@ const toggleEditing =() =>({
   type: 'TOGGLE_EDITING'
 })
 
-export {selectTodo,unselectTodo,nextTodo,prevTodo,deleteTask,toggleEditing}
+const handleTxtOnchange = (value) => ({
+  type: 'HANDLE_TXT_ONCHANGE',
+  value
+})
+
+export {selectTodo,unselectTodo,nextTodo,prevTodo,deleteTask,toggleEditing,handleTxtOnchange}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { toggleEditing } from '../../action/index'
+import { toggleEditing,handleTxtOnchange} from '../../action/index'
 import Appbar from '../appbar/appbar'
 import './TodoEditing.scss'
 
@@ -9,6 +9,11 @@ class TodoEditing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
+    this.handleOnchange = this.handleOnchange.bind(this)
+  }
+
+  handleOnchange(e){
+    this.props.handleTxtOnchange(e.target.value)
   }
   render() {
     let selected = this.props.selected
@@ -28,6 +33,8 @@ class TodoEditing extends React.Component {
               <textarea
                 rows="3"
                 placeholder="Editing"
+                value={this.props.editing.text}
+                onChange={this.handleOnchange}
               ></textarea>
               <p className="todo-editing-meta">
                 <i className={`fas fa-${selected.todo.icon}`}></i>
@@ -53,7 +60,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleEditing }, dispatch)
+  return bindActionCreators({ toggleEditing, handleTxtOnchange}, dispatch)
 }
 
 export default connect(

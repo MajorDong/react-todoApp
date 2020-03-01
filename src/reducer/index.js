@@ -126,19 +126,25 @@ const reducer = (state = defaultState, action) => {
         });
         return newState
       }
+    case 'HANDLE_TXT_ONCHANGE':
+      {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.editing.text = action.value
+        console.log(newState.editing.text)
+        return newState
+      }
     case 'TOGGLE_EDITING':
       {
         let newState = JSON.parse(JSON.stringify(state))
         if (newState.editing && newState.editing.text) {
-          console.log('1', newState.editing)
-          newState.selected.todo.tasks.unshift({
+          newState.selected.todo.tasks.push({
+            id: Math.random(),
             title: newState.editing.text,
             done: false,
             deleted: false
           })
-        }else{
-          newState.editing = newState.editing ? null : {text: ''}
         }
+        newState.editing = newState.editing ? null : {text: ''}
         return newState
       }
     default:
