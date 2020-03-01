@@ -8,7 +8,7 @@
 .todo-head {
   display: flex;
   padding: 20px;
-  height: 44px;
+  height: 27px;
   justify-content: space-between;
   align-items: flex-start;
   transform: translate3d(0, 0, 0);
@@ -17,21 +17,21 @@
 
 .todo-body {
   padding: 0 20px;
-  transform: translate3d(0, 189px, 0);
+  transform: translate3d(0, 156px, 0);
   will-change: transform;
 }
 .todo-icon {
   display: flex;
   width: 44px;
   height: 44px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   border-radius: 100%;
   justify-content: center;
   align-items: center;
   font-size: 18px;
 }
 .todo-menu {
-  color: #eee;
+  color: #ddd;
 }
 .todo-tips {
   opacity: 0.6;
@@ -45,14 +45,13 @@
 .todo-progress {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 17px;
 }
 .todo-progress-line {
   margin-right: 10px;
   flex: 1;
   height: 3px;
   background-color: #eee;
-
   i {
     display: block;
     height: 100%;

@@ -4,10 +4,13 @@
   height: 44px;
   font-size: 15px;
   z-index: 1;
+  color: white;
   h1 {
     display: flex;
     justify-content: center;
+    padding-top: 7px;
     flex: 1;
+    color: white;
   }
   span {
     padding: 0 20px;
