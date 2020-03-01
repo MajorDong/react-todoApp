@@ -4,6 +4,8 @@ import Appavatar from '../../components/avatar/appAvatar'
 import Gradient from '../../components/gradient/Gradient'
 import TodoList from '../../components/todolist/TodoList'
 import TodoDetail from '../../components/tododetail/TodoDetail'
+import FloatingButton from '../../components/floatingbutton/FloatingButton'
+import TodoEditing from '../../components/todoediting/TodoEditing'
 import './home.scss'
 
 class Home extends React.Component {
@@ -23,7 +25,8 @@ class Home extends React.Component {
         <Gradient />
         <TodoList />
         <TodoDetail />
-        home
+        <FloatingButton />
+        <TodoEditing />
       </div>
      );
   }

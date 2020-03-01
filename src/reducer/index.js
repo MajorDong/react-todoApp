@@ -89,7 +89,6 @@ const reducer = (state = defaultState, action) => {
         let newState = JSON.parse(JSON.stringify(state))
         newState.unselect = null
         newState.selected = action.selectedTodo
-        console.log(newState.selected)
         return newState
       }
     case 'UNSELECT_TODO':
@@ -131,13 +130,15 @@ const reducer = (state = defaultState, action) => {
       {
         let newState = JSON.parse(JSON.stringify(state))
         if (newState.editing && newState.editing.text) {
+          console.log('1', newState.editing)
           newState.selected.todo.tasks.unshift({
             title: newState.editing.text,
             done: false,
             deleted: false
           })
+        }else{
+          newState.editing = newState.editing ? null : {text: ''}
         }
-        newState.editing = newState.editing ? null : {text: ''}
         return newState
       }
     default:

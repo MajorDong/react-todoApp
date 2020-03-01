@@ -18,7 +18,7 @@ class TodoDetail extends React.Component {
       <div>
         {!!selected && (
             <div className="todo-detail">
-              <Appbar lFuc={this.props.unselectTodo} />
+              <Appbar leftfuc={this.props.unselectTodo} />
               <Todo 
                 todo={selected.todo}
                 theSelected={!!selected}

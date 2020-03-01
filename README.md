@@ -68,3 +68,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 1. img标签图片问题
+2. Appbar 的左icon在首页点击问题，加入一个selected判断解决

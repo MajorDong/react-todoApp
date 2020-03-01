@@ -6,7 +6,6 @@ import './Todo.scss'
 
 
 const Todo = (props) => {
-  console.log(props)
   let { todo, theSelected } = props
   const progressColor = useMemo(() => {
     const colorLeft = `color-stop(30%, ${todo.colors[0]})`
@@ -60,6 +59,7 @@ const Todo = (props) => {
           </div>
         </div>
       )}
+      
       <div className="todo-body">
         <p className="todo-tips">{todo.tasks.length} Tasks</p>
         <h3 className="todo-title">{todo.name}</h3>
@@ -72,32 +72,36 @@ const Todo = (props) => {
           </span>
           <span className="todo-progress-num">{progress}</span>
         </div>
-        <div className="todo-tasks">
-          {todayTasks.length > 0 && (
-            <div className="todo-tasks-today">
-              <h4>Today</h4>
-              <ul>
-                {todayTasks.map(item => (
-                  <li key={item.id}>
-                    <Task task={item}></Task>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {doneTasks.length > 0 && (
-            <div className="todo-tasks-done">
-              <h4>Done</h4>
-              <ul>
-                {doneTasks.map(item => (
-                  <li key={item.id}>
-                    <Task task={item}></Task>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+
+        {theSelected && (
+          <div className="todo-tasks">
+            {todayTasks.length > 0 && (
+              <div className="todo-tasks-today">
+                <h4>Today</h4>
+                <ul>
+                  {todayTasks.map(item => (
+                    <li key={item.id}>
+                      <Task task={item}></Task>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {doneTasks.length > 0 && (
+              <div className="todo-tasks-done">
+                <h4>Done</h4>
+                <ul>
+                  {doneTasks.map(item => (
+                    <li key={item.id}>
+                      <Task task={item}></Task>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
       </div>
     </div>
   )

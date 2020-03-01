@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import './appbar.scss'
 
 
@@ -11,9 +12,8 @@ class AppBar extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick(e){
-    console.log(1)
     e.stopPropagation()
-    this.props.lFuc()
+    this.props.leftfuc()
   }
   render() { 
     return ( 
@@ -41,4 +41,4 @@ AppBar.defaultProps = {
   right: 'ellipsis-v'
 }
  
-export default AppBar;
+export default connect()(AppBar);
