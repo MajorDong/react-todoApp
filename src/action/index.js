@@ -15,9 +15,9 @@ const prevTodo = () =>({
   type: 'PREV_TODO'
 })
 
-const deleteTask = (taskID) =>({
+const deleteTask = (value) =>({
   type: 'DELETE_TASK',
-  taskID
+  value
 })
 const toggleEditing =() =>({
   type: 'TOGGLE_EDITING'

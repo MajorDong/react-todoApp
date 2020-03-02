@@ -69,3 +69,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 1. img标签图片问题
 2. Appbar 的左icon在首页点击问题，加入一个selected判断解决
+3. 一个bug解决了一上午，发现是todolidst组件和tododetail组件渲染不一致导致，在进行页面增加删除操作的时候，页面不会根据Newprops更新组件，重写了todolist的选择逻辑和tododetail的数据来源解决。
+4. 一个bug通过currentIndex选择todo的的逻辑有问题，导致在左右两端无法选择到todo，
+重写reducer的PREV_TODO和NEXT_TODO，改用余数。

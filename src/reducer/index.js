@@ -101,25 +101,24 @@ const reducer = (state = defaultState, action) => {
     case 'NEXT_TODO':
       {
         let newState = JSON.parse(JSON.stringify(state))
-        if (newState.currentIndex < newState.todos.length - 1) {
-          newState.currentIndex++
-          return newState
-        }
+        let count = newState.currentIndex + 1
+        newState.currentIndex = count % 3
+        return newState
       }
     case 'PREV_TODO':
       {
         let newState = JSON.parse(JSON.stringify(state))
-        if (newState.currentIndex > 0) {
-          newState.currentIndex--
-          return newState
-        }
+        let count = newState.currentIndex - 1
+        newState.currentIndex = Math.abs(count % 3)
+        return newState
       }
+
     case 'DELETE_TASK':
       {
         let newState = JSON.parse(JSON.stringify(state))
-        newState.todos.forEach( todo => {
-          todo.tasks.forEach( task =>{
-            if(task.id === action.taskID){
+        newState.todos.forEach(todo => {
+          todo.tasks.forEach(task => {
+            if (task.title === action.value.task.title) {
               task.deleted = true
             }
           })
@@ -137,14 +136,18 @@ const reducer = (state = defaultState, action) => {
       {
         let newState = JSON.parse(JSON.stringify(state))
         if (newState.editing && newState.editing.text) {
-          newState.selected.todo.tasks.push({
-            id: Math.random(),
-            title: newState.editing.text,
-            done: false,
-            deleted: false
+          newState.todos.forEach((todo) => {
+            if (todo.name === newState.selected.todo.name) {
+              todo.tasks.push({
+                id: Math.random(),
+                title: newState.editing.text,
+                done: false,
+                deleted: false
+              })
+            }
           })
         }
-        newState.editing = newState.editing ? null : {text: ''}
+        newState.editing = newState.editing ? null : { text: '' }
         return newState
       }
     default:
