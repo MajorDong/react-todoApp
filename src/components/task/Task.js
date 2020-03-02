@@ -9,48 +9,50 @@ class Task extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
-    
+
   }
- 
-  
 
   render() {
     let task = this.props.task
 
-    
     return (
       <div>
-          {!task.deleted && (
+        {!task.deleted && (
 
-            <div className="task">
-              <label htmlFor={task.title}>{task.title}</label>
-
-              {!task.done && (
-                 <input id={task.title} 
-                 type="checkbox" 
-                 onClick={()=>{
-                   this.props.doneTask({task})
-                 }}
-               ></input>
-              )}
-              
-              {task.done &&(
-                <span
-                  className="task-delete"
-                  onClick={()=>{
-                    this.props.deleteTask({task})
-                }}
-                >
-                  <i className="fa fa-trash"></i>
-                </span>
-              )}
-
+          <div className="task">
+            <div
+              className="task-title"
+            >
+              {task.title}
             </div>
-          )}
+            {!task.done && (
+              <span
+                onClick={() => {
+                  this.props.doneTask({ task })
+                }}
+                className="task-done"
+              >
+                <i className="fa fa-check-circle"></i>
+              </span>
+            )}
+
+            {task.done && (
+              <span
+                className="task-delete"
+                onClick={() => {
+                  this.props.deleteTask({ task })
+                }}
+              >
+                <i className="fa fa-trash"></i>
+              </span>
+            )}
+
+          </div>
+        )}
       </div>
 
     );
-    
+
   }
 }
 
@@ -58,15 +60,15 @@ Task.propTypes = {
   task: PropTypes.object
 }
 
-const mapStateToProps = (state) =>{
-  return{
+const mapStateToProps = (state) => {
+  return {
 
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { doneTask,deleteTask },
+    { doneTask, deleteTask },
     dispatch
   )
 }

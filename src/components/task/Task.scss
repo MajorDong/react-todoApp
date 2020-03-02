@@ -3,9 +3,14 @@
   padding: 12px 0;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+  input {
+    display: block;
+  }
+  .task-title{
+    flex: 1;
+  }
 }
-.task input {
-  display: block;
-}
+
+
 
 
