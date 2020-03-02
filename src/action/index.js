@@ -15,6 +15,11 @@ const prevTodo = () =>({
   type: 'PREV_TODO'
 })
 
+const doneTask = (value) =>({
+  type: 'DONE_TASK',
+  value
+})
+
 const deleteTask = (value) =>({
   type: 'DELETE_TASK',
   value
@@ -28,4 +33,13 @@ const handleTxtOnchange = (value) => ({
   value
 })
 
-export {selectTodo,unselectTodo,nextTodo,prevTodo,deleteTask,toggleEditing,handleTxtOnchange}
+export {
+  selectTodo,
+  unselectTodo,
+  nextTodo,
+  prevTodo,
+  doneTask,
+  deleteTask,
+  toggleEditing,
+  handleTxtOnchange
+}

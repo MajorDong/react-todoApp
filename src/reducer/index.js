@@ -112,7 +112,18 @@ const reducer = (state = defaultState, action) => {
         newState.currentIndex = Math.abs(count % 3)
         return newState
       }
-
+    case 'DONE_TASK': 
+      {
+        let newState = JSON.parse(JSON.stringify(state))
+        newState.todos.forEach(todo => {
+          todo.tasks.forEach(task => {
+            if (task.title === action.value.task.title) {
+              task.done = true
+            }
+          })
+        });
+        return newState
+      }
     case 'DELETE_TASK':
       {
         let newState = JSON.parse(JSON.stringify(state))
@@ -129,7 +140,6 @@ const reducer = (state = defaultState, action) => {
       {
         let newState = JSON.parse(JSON.stringify(state))
         newState.editing.text = action.value
-        console.log(newState.editing.text)
         return newState
       }
     case 'TOGGLE_EDITING':
