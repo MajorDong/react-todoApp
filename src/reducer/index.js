@@ -66,7 +66,7 @@ const defaultState = {
         {
           id: 9,
           title: 'Interviews',
-          done: true,
+          done: false,
           deleted: false,
         }
       ],
