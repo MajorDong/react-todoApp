@@ -29,19 +29,19 @@ const defaultState = {
       tasks: [
         {
           id: 3,
-          title: 'Design Sprint',
+          title: 'Design page',
           done: true,
           deleted: false
         },
         {
           id: 4,
-          title: 'Icon Set Design for Mobile App',
+          title: 'Design for Mobile App',
           done: true,
           deleted: false
         },
         {
           id: 5,
-          title: 'HTML/CSS Study',
+          title: 'HTML5/CSS3 Study',
           done: true,
           deleted: false
         },
@@ -53,21 +53,21 @@ const defaultState = {
         },
         {
           id: 7,
-          title: 'Design Meeting',
+          title: 'Meeting',
           done: false,
           deleted: false
         },
         {
           id: 8,
-          title: 'Quick Prototyping',
-          done: false,
+          title: 'Complete Todo Component',
+          done: true,
           deleted: false
         },
         {
           id: 9,
-          title: 'UX Conference',
-          done: false,
-          deleted: false
+          title: 'Interviews',
+          done: true,
+          deleted: false,
         }
       ],
       colors: ['#5b9df9', '#47bfff']
@@ -81,6 +81,18 @@ const defaultState = {
           title: 'House Keeping',
           done: true,
           deleted: false
+        },
+        {
+          id: 11,
+          title: 'Repair Water Pipes',
+          done: false,
+          deleted: false,
+        },
+        {
+          id: 12,
+          title: 'Feed The Cat',
+          done: false,
+          deleted: false,
         }
       ],
       colors: ['#2c7d59', '#3ba776']
@@ -155,7 +167,7 @@ const reducer = (state = defaultState, action) => {
           newState.todos.forEach((todo) => {
             if (todo.name === newState.selected.todo.name) {
               todo.tasks.unshift({
-                id: Math.random(),
+                id: Math.random()*100,
                 title: newState.editing.text,
                 done: false,
                 deleted: false
