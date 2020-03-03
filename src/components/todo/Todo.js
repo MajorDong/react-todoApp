@@ -33,8 +33,8 @@ class Todo extends React.Component {
     const progress = () => {
       let allCount = todo.tasks.filter(task => !task.deleted).length
       let doneCount = todo.tasks.filter(task => !task.deleted && task.done).length
-      let numStr = Math.round(doneCount / allCount * 100) + '%'
-      return numStr
+      let num = Math.round(doneCount / allCount * 100) 
+      return num
     }
     return (
       <div className="todo">
@@ -53,18 +53,18 @@ class Todo extends React.Component {
 
         <div className="todo-body">
           <div className="todo-tips">
-            <div>{todo && todo.tasks.length} Tasks</div>
+            <div>{doneTasks().length + todayTasks().length} Tasks</div>
             <div>{doneTasks().length} Done</div>
           </div>
           <h3 className="todo-title">{todo.name}</h3>
           <div className="todo-progress">
             <span className="todo-progress-line">
               <i style={{
-                width: progress(),
+                width: progress() + '%',
                 backgroundImage: progressColor()
               }}></i>
             </span>
-            <span className="todo-progress-num">{progress()}</span>
+            <span className="todo-progress-num">{!!progress() ? progress() + '%' : '0%' }</span>
           </div>
 
           {theSelected && (

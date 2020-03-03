@@ -13,6 +13,12 @@ const defaultState = {
           title: 'Dating',
           done: true,
           deleted: false
+        },
+        {
+          id: 10,
+          title: 'Go swimming',
+          done: false,
+          deleted: false
         }
       ],
       colors: ['#ff6262', '#ffa947']
@@ -148,7 +154,7 @@ const reducer = (state = defaultState, action) => {
         if (newState.editing && newState.editing.text) {
           newState.todos.forEach((todo) => {
             if (todo.name === newState.selected.todo.name) {
-              todo.tasks.push({
+              todo.tasks.unshift({
                 id: Math.random(),
                 title: newState.editing.text,
                 done: false,
