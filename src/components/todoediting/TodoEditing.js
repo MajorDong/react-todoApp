@@ -13,6 +13,7 @@ class TodoEditing extends React.Component {
   }
 
   handleOnchange(e) {
+    console.log(e.target.value)
     this.props.handleTxtOnchange(e.target.value)
   }
   render() {

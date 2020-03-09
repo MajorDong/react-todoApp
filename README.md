@@ -73,3 +73,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 4. 一个bug通过currentIndex选择todo的的逻辑有问题，导致在左右两端无法选择到todo，
 重写reducer的PREV_TODO和NEXT_TODO，改用余数。
 5. 一个bug，在使用的时候发现，如果所有认为都完成并删除，Todo组件的进度条num会出现0/0 返回NaN的情况，让progress函数不返回字符串返回数字，渲染时进行falsy值判断解决。
+6. 设计来源 https://dribbble.com/shots/3812962-iPhone-X-Todo-Concept

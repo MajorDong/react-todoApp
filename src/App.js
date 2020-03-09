@@ -1,6 +1,6 @@
 import React from 'react';
 import RouterIndex from './router/index'
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import store from './stroe/index'
 import { Provider } from 'react-redux'
 
