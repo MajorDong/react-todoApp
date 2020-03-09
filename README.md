@@ -1,76 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## TomTodo 单页Todo应用
 
-## Available Scripts
+一个基于React & React-Redux & Redux的todo应用，在学习React和Redux的时候，不停的在做Todo的小例子去加深理解，想把这些小例子进行扩展，去理解学习更多的React特性。
 
-In the project directory, you can run:
+在Dribbble上看到了一个很好看的Todo App的设计，就想着能不能实现它。
 
-### `yarn start`
+偶然看见Youtube上有用Vue部分实现的例子，不过功能并没有完全实现，就想自己使用React做一个基本功能齐全的。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 设计来源
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+https://dribbble.com/shots/3812962-iPhone-X-Todo-Concept
 
-### `yarn test`
+###  功能
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 单页TodoAPP
+- 根据Todo主题进行背景颜色切换，由touch事件触发
+- 不同的Todo主题根据Task完成情况和是否删除实现Todo详情页
+- 可自行编辑新的Task
 
-### `yarn build`
+### 技术栈
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React：使用ES6语法，使用Hook进行优化
+- Redux：没有异步Action，故没有使用中间件
+- React-Redux：尽量分离UI和操作逻辑
+- SCSS：利用预处理器实现VUE类似CSS的Scope的效果，没有使用Style-Component
+- CSS3:  实现浮动按钮的过渡
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 遇见的问题
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+在实现的过程中还是遇到不少问题，参考的例子利用VUE实现了UI，但操作逻辑基本没有实现，特别是很多问题是在自己进行真正的使用过程中发现的。
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+好在都一一解决了。
 
 1. img标签图片问题
+
 2. Appbar 的左icon在首页点击问题，加入一个selected判断解决
-3. 一个bug解决了一上午，发现是todolidst组件和tododetail组件渲染不一致导致，在进行页面增加删除操作的时候，页面不会根据Newprops更新组件，重写了todolist的选择逻辑和tododetail的数据来源解决。
-4. 一个bug通过currentIndex选择todo的的逻辑有问题，导致在左右两端无法选择到todo，
-重写reducer的PREV_TODO和NEXT_TODO，改用余数。
+
+3. 一个bug解决了一上午，发现是TodoLidst组件和TodoDetail组件渲染数据不一致导致，在进行页面增加删除操作的时候，TodoDetail页面不会根据props更新组件，需要返回到TodoList组件选择Todo在能更新。重写了TodoList的选择逻辑和TodoDetail的数据来源解决。
+
+4. 一个bug通过currentIndex选择Todo的的逻辑有问题，导致在最左右两端无法选择到Todo，重写reducer的PREV_TODO和NEXT_TODO，改用余数。
+
 5. 一个bug，在使用的时候发现，如果所有认为都完成并删除，Todo组件的进度条num会出现0/0 返回NaN的情况，让progress函数不返回字符串返回数字，渲染时进行falsy值判断解决。
-6. 设计来源 https://dribbble.com/shots/3812962-iPhone-X-Todo-Concept
+
+### 总结
+
+- 加深理解：自己先学习了一段时间VUE，再来学习React的。MVVM框架的很多思想都很相似，做了几个项目真正的理解了为什么Action中的参数为什么要取名为Payload，Payload就像是一个搬运工将页面信息和外部请求数据搬进页面的状态管理数据。
+- 解决问题：锻炼自己解决问题的能力，发现问题 -> 找到来源 -> 解决思路。用好google很重要，能在ISSUE和Overstackflow里找到到大部分问题的答案，果然很多坑前人都已经踩过了。
+
+### 不足
+
+- 自己很难把握整个App的功能来设计原始State，导致添加一个功能或修改一个bug时，要改变State的整体结构设计。牵一发而动全身，导致解决一个问题，要重写很多操作逻辑和重新对页面渲染的数据进行处理。
+
+### 后续
+
+1. 学习完Hook后重写项目。
+2. 使用react-transition-group添加过度动画。
