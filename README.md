@@ -54,3 +54,5 @@ https://dribbble.com/shots/3812962-iPhone-X-Todo-Concept
 
 1. 学习完Hook后重写项目。
 2. 使用react-transition-group添加过度动画。
+3. 考虑将Todo组件拆封
+4. 添加mouse事件（已完成）

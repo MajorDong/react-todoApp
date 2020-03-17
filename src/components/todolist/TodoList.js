@@ -8,7 +8,9 @@ import './TodoList.scss'
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      using: false
+    }
     this.TodoListRef = React.createRef(null)
   }
   render() {
@@ -25,8 +27,8 @@ class TodoList extends React.Component {
                 key={todo.name}
                 style={{ transform: `translateX(-${this.props.currentIndex * 100}%)` }}
               >
-              
-              <Todo
+
+                <Todo
                   todo={todo}
                   selectfuc={this.props.selectTodo}
                   theSelected={!!this.props.selected && todo === this.props.selected.todo}
@@ -38,26 +40,60 @@ class TodoList extends React.Component {
       </div>
     );
   }
-  componentDidMount(){
+  componentDidMount() {
     const TodoListEL = this.TodoListRef && this.TodoListRef.current
-    let touch = {}
-    TodoListEL.addEventListener('touchstart', evt => {
-      touch.startX = evt.touches[0].clientX
-      touch.endX = 0
-    })
-    TodoListEL.addEventListener('touchmove', evt => {
-      touch.endX = evt.touches[0].clientX
-    })
-    TodoListEL.addEventListener('touchend', () => {
-      if (!touch.endX || Math.abs(touch.endX - touch.startX) < 10) {
-        return
-      }
-      if (touch.endX < touch.startX) {
-        this.props.nextTodo()
-      } else {
-        this.props.prevTodo()
-      }
-    })
+    let touch = {
+
+    }
+    if (document.body.ontouchstart !== undefined) {
+      TodoListEL.addEventListener('touchstart', e => {
+        touch.startX = e.touches[0].clientX
+        touch.endX = 0
+      })
+      TodoListEL.addEventListener('touchmove', e => {
+        touch.endX = e.touches[0].clientX
+      })
+      TodoListEL.addEventListener('touchend', () => {
+        if (!touch.endX || Math.abs(touch.endX - touch.startX) < 10) {
+          return
+        }
+        if (touch.endX < touch.startX) {
+          this.props.nextTodo()
+        } else {
+          this.props.prevTodo()
+        }
+      })
+    }else{
+      TodoListEL.addEventListener('mousedown', e =>{
+        this.setState({
+          using: true
+        })
+        touch.startX = e.clientX
+        touch.endX = 0
+      })
+      TodoListEL.addEventListener('mousemove', e =>{
+        if(this.state.using){
+          touch.endX = e.clientX
+        }
+      })
+      TodoListEL.addEventListener('mousemove', () => {
+        if(this.state.using){
+          if(!touch.endX || Math.abs(touch.endX - touch.startX) < 10){
+            return
+          }
+          if (touch.endX < touch.startX) {
+            this.props.nextTodo()
+          } else {
+            this.props.prevTodo()
+          }
+        }
+       
+        this.setState({
+          using: false
+        })
+      })
+    }
+
   }
 }
 

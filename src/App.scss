@@ -26,7 +26,6 @@ button {
 }
 html,
 body {
-  height: 100%;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
@@ -36,6 +35,8 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .app {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
+  background: white;
 }
