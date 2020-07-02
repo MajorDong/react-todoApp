@@ -1,6 +1,6 @@
 ## TomTodo 单页Todo应用
 
-一个基于React & React-Redux & Redux的todo应用，在学习React和Redux的时候，不停的在做Todo的小例子去加深理解，想把这些小例子进行扩展，去理解学习更多的React特性。
+一个基于React & React-Redux & Redux的todo应用
 
 在Dribbble上看到了一个很好看的Todo App的设计，就想着能不能实现它。
 
@@ -22,6 +22,7 @@ https://dribbble.com/shots/3812962-iPhone-X-Todo-Concept
 - React：使用ES6语法，使用Hook进行优化
 - Redux：没有异步Action，故没有使用中间件
 - React-Redux：尽量分离UI和操作逻辑
+- React-Hook: 使用useMemo进行优化
 - SCSS：利用预处理器实现VUE类似CSS的Scope的效果，没有使用Style-Component
 - CSS3:  实现浮动按钮的过渡
 

@@ -6,49 +6,49 @@ import './appbar.scss'
 
 
 class AppBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-    this.handleClick = this.handleClick.bind(this)
-    this.handleClick1 = this.handleClick1.bind(this)
-  }
-  handleClick(e){
-    e.stopPropagation()
-    this.props.leftfuc()
-  }
-  handleClick1(){
+	constructor(props) {
+		super(props);
+		this.state = {}
+		this.handleClick = this.handleClick.bind(this)
+		this.handleClickNull = this.handleClickNull.bind(this)
+	}
+	handleClick(e) {
+		e.stopPropagation()
+		this.props.leftfuc()
+	}
+	handleClickNull() {
 
-  }
-  render() { 
-    return ( 
-      <div className="appBar" >
-        <span onClick={!!this.props.selected ? this.handleClick : this.handleClick1}>
-          <i className={`fa fa-${this.props.left}`}></i>
-        </span>
-        <h1>{this.props.title}</h1>
-        <span>
-          <i className={`fa fa-${this.props.right}`}></i>
-        </span>
-      </div>
-     );
-  }
+	}
+	render() {
+		return (
+			<div className="appBar" >
+				<span onClick={!!this.props.selected ? this.handleClick : this.handleClickNull}>
+					<i className={`fa fa-${this.props.left}`}></i>
+				</span>
+				<h1>{this.props.title}</h1>
+				<span>
+					<i className={`fa fa-${this.props.right}`}></i>
+				</span>
+			</div>
+		);
+	}
 }
 AppBar.propTypes = {
-  title: PropTypes.string,
-  left: PropTypes.string,
-  right: PropTypes.string,
-  leftfuc: PropTypes.func
+	title: PropTypes.string,
+	left: PropTypes.string,
+	right: PropTypes.string,
+	leftfuc: PropTypes.func
 }
 AppBar.defaultProps = {
-  title: '',
-  left: 'chevron-left',
-  right: 'ellipsis-v'
+	title: '',
+	left: 'chevron-left',
+	right: 'ellipsis-v'
 }
 
-const mapStateToProps = (state)=>{
-  return{
-    selected: state.selected
-  }
+const mapStateToProps = (state) => {
+	return {
+		selected: state.selected
+	}
 }
- 
+
 export default connect(mapStateToProps)(AppBar);
